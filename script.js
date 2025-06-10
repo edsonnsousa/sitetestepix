@@ -5,31 +5,39 @@ async function copyPixKey() {
     const toast = document.getElementById("toast");
     
     try {
-        // Seleciona o texto
+        // Seleciona o texto e foca no input
         pixKeyInput.select();
         pixKeyInput.setSelectionRange(0, 99999); // Para dispositivos móveis
+        pixKeyInput.focus(); // Garante que o input está focado
         
+        let copiedSuccessfully = false;
+
         // Tenta usar a API moderna do clipboard
         if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(pixKeyInput.value);
+            copiedSuccessfully = true;
         } else {
             // Fallback para navegadores mais antigos
-            document.execCommand("copy");
+            copiedSuccessfully = document.execCommand("copy");
         }
         
-        // Feedback visual no botão
-        const originalContent = copyBtn.innerHTML;
-        copyBtn.innerHTML = "<i class=\"fas fa-check\"></i> Copiado!";
-        copyBtn.classList.add("copied");
-        
-        // Mostra o toast
-        showToast();
-        
-        // Restaura o botão após 2 segundos
-        setTimeout(() => {
-            copyBtn.innerHTML = originalContent;
-            copyBtn.classList.remove("copied");
-        }, 2000);
+        if (copiedSuccessfully) {
+            // Feedback visual no botão
+            const originalContent = copyBtn.innerHTML;
+            copyBtn.innerHTML = "<i class=\"fas fa-check\"></i> Copiado!";
+            copyBtn.classList.add("copied");
+            
+            // Mostra o toast
+            showToast();
+            
+            // Restaura o botão após 2 segundos
+            setTimeout(() => {
+                copyBtn.innerHTML = originalContent;
+                copyBtn.classList.remove("copied");
+            }, 2000);
+        } else {
+            throw new Error("Falha ao copiar usando execCommand.");
+        }
         
     } catch (err) {
         console.error("Erro ao copiar:", err);
@@ -118,4 +126,5 @@ if (isMobileDevice()) {
     `;
     document.head.appendChild(style);
 }
+
 
