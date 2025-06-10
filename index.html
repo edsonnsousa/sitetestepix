@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chave Pix - Corrida Solidária</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="header">
+                <div class="pix-icon">
+                    <i class="fas fa-qrcode"></i>
+                </div>
+                <h1>Chave Pix para Doação</h1>
+                <p class="subtitle">Ajude a tornar a Corrida Solidária um sucesso!</p>
+            </div>
+            
+            <div class="recipient-info">
+                <h2>Corrida Solidária: Aparelho Auditivo</h2>
+                <p class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Local: Cerâmica Cil
+                </p>
+                <p class="date">
+                    <i class="fas fa-calendar-alt"></i>
+                    Data: 06/07
+                </p>
+                <p class="campaign">
+                    <i class="fas fa-bullhorn"></i>
+                    Objetivo: Compra de aparelho auditivo
+                </p>
+                <p class="amount">
+                    <i class="fas fa-dollar-sign"></i>
+                    Valor Sugerido: R$ 20,00
+                </p>
+            </div>
+
+            <div class="pix-key-section">
+                <label for="pixKey">Chave Pix (Copia e Cola):</label>
+                <div class="pix-key-container">
+                    <input 
+                        type="text" 
+                        id="pixKey" 
+                        value="00020126480014br.gov.bcb.pix0126sandykatiane2002@gmail.com520400005303986540520.005802BR5913Sandy Katiane6011Teresina/PI62200516CORRIDASOLIDARIA630416B6" 
+                        readonly
+                    >
+                    <button id="copyBtn" class="copy-btn" onclick="copyPixKey()">
+                        <i class="fas fa-copy"></i>
+                        Copiar
+                    </button>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <h3>Como doar via Pix:</h3>
+                <ol>
+                    <li>Clique no botão "Copiar" acima para copiar a chave Pix.</li>
+                    <li>Abra o aplicativo do seu banco ou instituição financeira.</li>
+                    <li>Procure pela opção "Pix" ou "Transferências".</li>
+                    <li>Selecione "Pix Copia e Cola" ou "Pagar com QR Code".</li>
+                    <li>Cole a chave copiada no campo indicado.</li>
+                    <li>Confirme os dados do beneficiário (Sandy Katiane) e o valor.</li>
+                    <li>Finalize a transferência. Sua ajuda faz a diferença!</li>
+                </ol>
+            </div>
+
+            <div class="footer">
+                <p>
+                    <i class="fas fa-shield-alt"></i>
+                    Transação segura via sistema Pix do Banco Central
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div id="toast" class="toast">
+        <i class="fas fa-check-circle"></i>
+        Chave Pix copiada com sucesso!
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
